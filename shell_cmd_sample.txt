@@ -1,0 +1,8 @@
+dataflow config server http://dataflow-server.local.pcfdev.io
+app register --type sink --name jdbc --uri http://files.local.pcfdev.io/jdbc-sink-rabbit-1.0.0.BUILD-SNAPSHOT.jar --force
+app register --type source --name http --uri http://files.local.pcfdev.io/http-source-rabbit-1.0.0.BUILD-SNAPSHOT.jar --force
+
+stream create --name mysqlstream --definition "http | jdbc --spring.datasource.url='jdbc:mysql://mysql.local.pcfdev.io:3306/cf_22eef3cf_f001_40ec_bb34_88e97bdb7195' --spring.datasource.username=e9a6ORYQEjepJKQc --spring.datasource.password=WgyWSh4WSlTr0g2i --tableName=names --columns=name" --deploy
+
+
+http post --contentType 'application/json' --target http://mysqlstream-http.local.pcfdev.io --data "{\"name\": \"Bar\"}"
