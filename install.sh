@@ -24,3 +24,6 @@ cf set-env dataflow-server spring.cloud.deployer.cloudfoundry.memory  256
 cf set-env dataflow-server spring.cloud.deployer.cloudfoundry.disk  512
 
 cf start dataflow-server
+
+#host for jar files
+cf push files -p app/
