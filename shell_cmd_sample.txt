@@ -6,3 +6,5 @@ stream create --name mysqlstream --definition "http | jdbc --spring.datasource.u
 
 
 http post --contentType 'application/json' --target http://mysqlstream-http.local.pcfdev.io --data "{\"name\": \"Bar\"}"
+
+#check the mysql database, you should able to see Bar in your names table
